@@ -1,0 +1,2 @@
+jedi==0.13.2
+git+https://github.com/yorodm/pygls@develop#egg=pygls
