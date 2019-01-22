@@ -1,5 +1,4 @@
 # coding: utf-8
-from typings import Any, List
 from pygls.server import LanguageServer
 
 
@@ -9,4 +8,4 @@ class PythonLanguageServer(LanguageServer):
         super().__init__()
 
 
-server = PythonLanguageServer()
+py_server = PythonLanguageServer()
