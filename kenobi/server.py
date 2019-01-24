@@ -8,5 +8,7 @@ class PythonLanguageServer(LanguageServer):
         super().__init__()
 
 
-py_server = PythonLanguageServer()
-feature = py_server.feature
+__py_server = PythonLanguageServer()
+
+feature = __py_server.feature
+command = __py_server.command
