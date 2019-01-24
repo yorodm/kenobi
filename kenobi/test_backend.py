@@ -6,11 +6,14 @@ from pygls.workspace import Document, Workspace
 from pygls.types import (
     CompletionParams,
     TextDocumentIdentifier,
+    TextDocumentPositionParams,
     Position,
     CompletionContext,
     CompletionTriggerKind,
 )
-from kenobi.features import complete_code
+
+from kenobi.features import complete_code, jump_to_definition
+from kenobi.util import uri_to_path
 
 # Stolen from pygls sample server tests
 
@@ -36,15 +39,38 @@ server.show_message_log = Mock()
 
 
 class TestServer(TestCase):
+
     def test_completion(self):
         fake_document_identifier = TextDocumentIdentifier(fake_document_uri)
         server.workspace.get_document = Mock(return_value=fake_document)
         params = CompletionParams(
             fake_document_identifier,
-            Position(3, 13),
+            Position(4, 13),
             CompletionContext(CompletionTriggerKind()),
         )
         completions = complete_code(server, params)
         self.assertTrue(
             any(filter(lambda x: x.label == "__doc__", completions.items))
+        )
+
+    def test_goto_definition_finds_file(self):
+        server.workspace.get_document = Mock(return_value=fake_document)
+        params = TextDocumentPositionParams(
+            TextDocumentIdentifier(fake_document_uri),
+            Position(1, 21)
+        )
+        definition = jump_to_definition(server, params)[0]
+        self.assertTrue(
+            uri_to_path(definition.uri).endswith('case.py'))
+
+    def test_goto_definition_finds_line(self):
+        server.workspace.get_document = Mock(return_value=fake_document)
+        params = TextDocumentPositionParams(
+            TextDocumentIdentifier(fake_document_uri),
+            Position(1, 21)
+        )
+        definition = jump_to_definition(server, params)[0]
+        start = definition.range.start
+        self.assertTrue(
+            start.line == 350 and start.character == 6
         )

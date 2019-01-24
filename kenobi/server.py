@@ -9,3 +9,4 @@ class PythonLanguageServer(LanguageServer):
 
 
 py_server = PythonLanguageServer()
+feature = py_server.feature
