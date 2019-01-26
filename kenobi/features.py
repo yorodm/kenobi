@@ -18,7 +18,7 @@ from pygls.types import (
     Position,
 )
 from kenobi.server import feature
-from kenobi.backend import complete, find_definition
+from kenobi.completion import complete, find_definition
 from kenobi.util import jedi_to_lsp_kind, path_to_uri
 from typing import List
 
