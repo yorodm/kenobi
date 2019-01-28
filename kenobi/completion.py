@@ -2,7 +2,7 @@
 from jedi import Script
 from jedi.api.classes import Completion, Definition
 from kenobi.util import uri_to_path
-from kenobi.util import jedi_to_lsp_kind, path_to_uri
+from kenobi.util import jedi_to_lsp_kind, path_to_uri, first_true
 from typing import List
 from pygls.types import (
     CompletionParams,
