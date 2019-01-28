@@ -20,6 +20,7 @@ from pygls.features import (
     HOVER
 )
 from kenobi.server import feature
+from itertools import takewhile
 
 
 def complete(uri: str, content: str, line: int, char: int) -> List[Completion]:
@@ -68,4 +69,6 @@ def document_hover(ls, c: TextDocumentPositionParams) -> MarkupContent:
         doc.uri, doc.source, c.position.line + 1, c.position.character
     )
     word = doc.word_at_position(c.position)
-    return items
+    definition = first_true(items, pred=lambda x: x.name == word)
+    doc = "".join(takewhile(lambda x: x != '.', definition.docstring()))
+    return MarkupContent('plaintext', doc)

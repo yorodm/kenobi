@@ -84,5 +84,5 @@ class TestServer(TestCase):
         )
         hover = document_hover(server, params)
         self.assertTrue(
-            'A class whose instances are single test cases.' in hover.value
+            'A class whose instances are single test cases' in hover.value
         )
