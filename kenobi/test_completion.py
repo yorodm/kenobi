@@ -12,7 +12,7 @@ from pygls.types import (
     CompletionTriggerKind,
 )
 
-from kenobi.features import complete_code, jump_to_definition
+from kenobi.completion import complete_code, jump_to_definition
 from kenobi.util import uri_to_path
 
 # Stolen from pygls sample server tests
@@ -61,7 +61,8 @@ class TestServer(TestCase):
         )
         definition = jump_to_definition(server, params)[0]
         self.assertTrue(
-            uri_to_path(definition.uri).endswith('case.py'))
+            uri_to_path(definition.uri).endswith('case.py')
+        )
 
     def test_goto_definition_finds_line(self):
         server.workspace.get_document = Mock(return_value=fake_document)
