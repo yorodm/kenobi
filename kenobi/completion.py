@@ -12,10 +12,12 @@ from pygls.types import (
     CompletionItem,
     Range,
     Position,
+    MarkupContent
 )
 from pygls.features import (
     COMPLETION,
     DEFINITION,
+    HOVER
 )
 from kenobi.server import feature
 
@@ -57,3 +59,13 @@ def jump_to_definition(ls, c: TextDocumentPositionParams) -> List[Location]:
         )
         for item in items
     ]
+
+
+@feature(HOVER)
+def document_hover(ls, c: TextDocumentPositionParams) -> MarkupContent:
+    doc = ls.workspace.get_document(c.textDocument.uri)
+    items = find_definition(
+        doc.uri, doc.source, c.position.line + 1, c.position.character
+    )
+    word = doc.word_at_position(c.position)
+    return items

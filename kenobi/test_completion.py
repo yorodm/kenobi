@@ -12,7 +12,7 @@ from pygls.types import (
     CompletionTriggerKind,
 )
 
-from kenobi.completion import complete_code, jump_to_definition
+from kenobi.completion import complete_code, jump_to_definition, document_hover
 from kenobi.util import uri_to_path
 
 # Stolen from pygls sample server tests
@@ -74,4 +74,15 @@ class TestServer(TestCase):
         start = definition.range.start
         self.assertTrue(
             start.line == 350 and start.character == 6
+        )
+
+    def test_hover(self):
+        server.workspace.get_document = Mock(return_value=fake_document)
+        params = TextDocumentPositionParams(
+            TextDocumentIdentifier(fake_document_uri),
+            Position(1, 21)
+        )
+        hover = document_hover(server, params)
+        self.assertTrue(
+            'A class whose instances are single test cases.' in hover.value
         )
