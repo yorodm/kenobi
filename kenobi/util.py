@@ -29,3 +29,7 @@ def path_to_uri(path: str) -> str:
 
 def jedi_to_lsp_kind(jedi_kind: str) -> int:
     return TYPES.get(jedi_kind, CompletionItemKind.Text)
+
+
+def first_true(iterable, default=False, pred=None):
+    return next(filter(pred, iterable), default)
