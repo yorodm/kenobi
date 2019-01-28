@@ -2,7 +2,7 @@ import os
 import pathlib
 from urllib import parse
 from pygls.types import CompletionItemKind
-
+from kenobi.server import command
 
 IS_WIN = os.name == "nt"
 
