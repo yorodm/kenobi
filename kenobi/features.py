@@ -7,7 +7,7 @@ from pygls.features import (
     TEXT_DOCUMENT_DID_OPEN,
     TEXT_DOCUMENT_DID_SAVE,
 )
-
+from kenobi.server import feature
 from kenobi.util import jedi_to_lsp_kind, path_to_uri
 from typing import List
 
