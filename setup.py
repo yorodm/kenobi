@@ -27,6 +27,10 @@ setup(
         'jedi',
         'pygls',
     ],
+    tests_require=[
+        "pytest==4.0.2",
+        "mock==2.0.0"
+    ],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
