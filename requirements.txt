@@ -1,2 +1,3 @@
+jedi==0.13.2
 pygls
 pytest
