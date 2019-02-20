@@ -1,4 +1,5 @@
 # Kenobi
+[![Build Status](https://travis-ci.org/yorodm/kenobi.svg?branch=develop)](https://travis-ci.org/yorodm/kenobi)
 
 > Help me Python Wan Kenobi, you're my only hope.
 
