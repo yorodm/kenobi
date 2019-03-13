@@ -12,29 +12,11 @@ Kenobi is a Python Language Server, to help those in need
 
 ## Status
 
-Here's a list of what the protocol provides and what's currently implemented
+What's currently implemented?
 
 [X] completion
-[ ] completion resolve
+
 [X] hover
-[ ] signatureHelp
-[ ] declaration
+
 [X] definition
-[ ] typeDefinition
-[ ] implementation
-[ ] references
-[ ] documentHighlight
-[ ] documentSymbol
-[ ] codeAction
-[ ] codeLens
-[ ] codeLens resolve
-[ ] documentLink
-[ ] documentLink resolve
-[ ] documentColor
-[ ] colorPresentation
-[ ] formatting
-[ ] rangeFormatting
-[ ] onTypeFormatting
-[ ] rename
-[ ] prepareRename
-[ ] foldingRange
+
