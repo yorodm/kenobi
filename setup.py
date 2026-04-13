@@ -28,7 +28,7 @@ setup(
         'pygls',
     ],
     tests_require=[
-        "pytest==4.0.2",
+        "pytest==9.0.3",
         "mock==2.0.0"
     ],
     classifiers=[
